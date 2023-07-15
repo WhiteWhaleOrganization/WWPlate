@@ -18,7 +18,7 @@ public protocol BMPlayerDelegate : class {
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool)
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool)
 }
-
+var a:String = ""
 /**
  internal enum to check the pan direction
  
