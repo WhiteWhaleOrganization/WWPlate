@@ -11,7 +11,7 @@ s.homepage         = "https://github.com/BrikerMan/BMPlayer"
 
 s.license          = 'MIT'
 s.author           = { "Eliyar Eziz" => "eliyar917@gmail.com" }
-s.source           = { :git => "https://github.com/BrikerMan/BMPlayer.git", :tag => s.version.to_s }
+s.source           = { :git => "https://github.com/wwmz/BMPlayer.git", :tag => s.version.to_s }
 s.social_media_url = 'http://weibo.com/536445669'
 
 s.ios.deployment_target = '10.0'
@@ -30,7 +30,7 @@ s.subspec 'Full' do |full|
     full.frameworks   = 'UIKit', 'AVFoundation'
 
     full.dependency 'BMPlayer/Core'
-    full.dependency 'SnapKit', '~> 5.0.0'
+    full.dependency 'SnapKit', '~> 5.6.0'
     full.dependency 'NVActivityIndicatorView', '~> 4.7.0'
 end
 
@@ -40,7 +40,7 @@ s.subspec 'CacheSupport' do |cache|
     cache.frameworks   = 'UIKit', 'AVFoundation'
 
     cache.dependency 'BMPlayer/Core'
-    cache.dependency 'SnapKit', '~> 5.0.0'
+    cache.dependency 'SnapKit', '~> 5.6.0'
     cache.dependency 'NVActivityIndicatorView', '~> 4.7.0'
     cache.dependency 'VIMediaCache'
 end
