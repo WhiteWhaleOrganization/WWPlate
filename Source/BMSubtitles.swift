@@ -14,10 +14,10 @@ public class BMSubtitles {
     public var delay: TimeInterval = 0
     
     public struct Group: CustomStringConvertible {
-        var index: Int
-        var start: TimeInterval
-        var end  : TimeInterval
-        var text : String
+        open var index: Int
+        open var start: TimeInterval
+        open var end  : TimeInterval
+        open var text : String
         
         init(_ index: Int, _ start: NSString, _ end: NSString, _ text: NSString) {
             self.index = index
