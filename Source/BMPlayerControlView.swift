@@ -426,11 +426,11 @@ open class BMPlayerControlView: UIView {
     }
     
     // MARK: - handle UI slider actions
-    open @objc func progressSliderTouchBegan(_ sender: UISlider)  {
+    @objc open func progressSliderTouchBegan(_ sender: UISlider)  {
       delegate?.controlView(controlView: self, slider: sender, onSliderEvent: .touchDown)
     }
     
-    open @objc func progressSliderValueChanged(_ sender: UISlider)  {
+    @objc open func progressSliderValueChanged(_ sender: UISlider)  {
       hidePlayToTheEndView()
       cancelAutoFadeOutAnimation()
       let currentTime = Double(sender.value) * totalDuration
@@ -438,7 +438,7 @@ open class BMPlayerControlView: UIView {
       delegate?.controlView(controlView: self, slider: sender, onSliderEvent: .valueChanged)
     }
     
-    open @objc func progressSliderTouchEnded(_ sender: UISlider)  {
+    @objc open func progressSliderTouchEnded(_ sender: UISlider)  {
       autoFadeOutControlViewWithAnimation()
       delegate?.controlView(controlView: self, slider: sender, onSliderEvent: .touchUpInside)
     }
