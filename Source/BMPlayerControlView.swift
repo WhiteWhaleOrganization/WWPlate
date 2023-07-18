@@ -480,15 +480,15 @@ open class BMPlayerControlView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setupUIComponents()
-        addSnapKitConstraint()
         customizeUIComponents()
+        addSnapKitConstraint()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupUIComponents()
-        addSnapKitConstraint()
         customizeUIComponents()
+        addSnapKitConstraint()
     }
     
     /// Add Customize functions here
