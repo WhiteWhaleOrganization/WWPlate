@@ -60,9 +60,9 @@ open class BMPlayerControlView: UIView {
     open var totalDuration: TimeInterval = 0
     open var delayItem: DispatchWorkItem?
     
-    var playerLastState: BMPlayerState = .notSetURL
+    open var playerLastState: BMPlayerState = .notSetURL
     
-    fileprivate var isSelectDefinitionViewOpened = false
+    open var isSelectDefinitionViewOpened = false
     
     // MARK: UI Components
     /// main views which contains the topMaskView and bottom mask view
