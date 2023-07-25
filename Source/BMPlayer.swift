@@ -101,7 +101,7 @@ open class BMPlayer: UIView {
     
     fileprivate var isURLSet        = false
     fileprivate var isSliderSliding = false
-    fileprivate var isPauseByUser   = false
+    open var isPauseByUser   = false
     fileprivate var isVolume        = false
     fileprivate var isMaskShowing   = false
     fileprivate var isSlowed        = false
