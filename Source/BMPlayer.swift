@@ -17,6 +17,7 @@ public protocol BMPlayerDelegate : class {
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime : TimeInterval, totalTime: TimeInterval)
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool)
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool)
+    func bmPlayer(player: BMPlayer, seek: Bool)
 }
 /**
  internal enum to check the pan direction
@@ -445,6 +446,9 @@ open class BMPlayer: UIView {
 }
 
 extension BMPlayer: BMPlayerLayerViewDelegate {
+    public func bmPlayer(player: BMPlayerLayerView, seek: Bool) {
+        delegate?.bmPlayer(player: self, seek: seek)
+    }
     public func bmPlayer(player: BMPlayerLayerView, playerIsPlaying playing: Bool) {
         controlView.playStateDidChange(isPlaying: playing)
         delegate?.bmPlayer(player: self, playerIsPlaying: playing)
