@@ -225,7 +225,7 @@ open class BMPlayerLayerView: UIView {
             let draggedTime = CMTime(value: Int64(secounds), timescale: 1)
             self.player!.seek(to: draggedTime, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero, completionHandler: { (finished) in
                 completion?()
-                delegate?.bmPlayer(player: self, seek: finished)
+                self.delegate?.bmPlayer(player: self, seek: finished)
             })
         } else {
             self.shouldSeekTo = secounds
