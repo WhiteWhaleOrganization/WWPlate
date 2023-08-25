@@ -113,9 +113,9 @@ open class BMPlayer: UIView {
     //Cache is playing result to improve callback performance
     fileprivate var isPlayingCache: Bool? = nil
     
-    var bridgeView:UIView!
-    var bridgeIV:UIImageView!
-    var bridgeProgress:UIProgressView!
+    open var bridgeView:UIView!
+    open var bridgeIV:UIImageView!
+    open var bridgeProgress:UIProgressView!
     // MARK: - Public functions
     
     /**
