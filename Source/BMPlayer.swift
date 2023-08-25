@@ -90,7 +90,6 @@ open class BMPlayer: UIView {
     
     /// 音量滑竿
     fileprivate var volumeViewSlider: UISlider!
-    
     fileprivate let BMPlayerAnimationTimeInterval: Double             = 4.0
     fileprivate let BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
     
@@ -114,6 +113,9 @@ open class BMPlayer: UIView {
     //Cache is playing result to improve callback performance
     fileprivate var isPlayingCache: Bool? = nil
     
+    var bridgeView:UIView!
+    var bridgeIV:UIImageView!
+    var bridgeProgress:UIProgressView!
     // MARK: - Public functions
     
     /**
@@ -294,6 +296,7 @@ open class BMPlayer: UIView {
                 
             case BMPanDirection.vertical:
                 self.isVolume = false
+                self.bridgeView.isHidden = true
             }
         default:
             break
@@ -302,10 +305,13 @@ open class BMPlayer: UIView {
     
     fileprivate func verticalMoved(_ value: CGFloat) {
         if BMPlayerConf.enableVolumeGestures && self.isVolume{
+            self.bridgeView.isHidden = true
             self.volumeViewSlider.value -= Float(value / 10000)
         }
         else if BMPlayerConf.enableBrightnessGestures && !self.isVolume{
             UIScreen.main.brightness -= value / 10000
+            self.bridgeView.isHidden = false
+            self.bridgeProgress.progress = Float(UIScreen.main.brightness)
         }
     }
     
@@ -406,6 +412,18 @@ open class BMPlayer: UIView {
             controlView = BMPlayerControlView()
         }
         
+        self.bridgeView = UIView()
+        self.bridgeView.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        self.bridgeView.layer.cornerRadius = 10
+        self.bridgeIV = UIImageView(image: BMImageResourcePath("light"))
+        self.bridgeView.addSubview(self.bridgeIV)
+        self.bridgeProgress = UIProgressView()
+        self.bridgeProgress.layer.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.1).cgColor
+        self.bridgeProgress.layer.cornerRadius = 1
+        self.bridgeProgress.trackTintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+        
+        
+        
         addSubview(controlView)
         controlView.updateUI(isFullScreen)
         controlView.delegate = self
@@ -416,6 +434,29 @@ open class BMPlayer: UIView {
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panDirection(_:)))
         self.addGestureRecognizer(panGesture)
+        
+        addSubview(bridgeView)
+        self.bridgeView.addSubview(self.bridgeIV)
+        self.bridgeView.addSubview(self.bridgeProgress)
+        bridgeView.snp.makeConstraints { (make) in
+            make.top.equalTo(60)
+            make.centerX.equalToSuperview()
+        }
+        
+        bridgeIV.snp.makeConstraints { (make) in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.top.left.equalTo(14)
+            make.bottom.equalTo(-14)
+        }
+        
+        bridgeIV.snp.makeConstraints { (make) in
+            make.height.equalTo(4)
+            make.right.equalTo(-14)
+            make.centerX.equalToSuperview()
+            make.left.equalTo(bridgeIV.snp.right).offset(12)
+        }
+        bridgeView.isHidden = true
     }
     
     fileprivate func initUIData() {
@@ -442,6 +483,11 @@ open class BMPlayer: UIView {
         playerLayer!.delegate = self
         controlView.showLoader()
         self.layoutIfNeeded()
+    }
+    
+    open func BMImageResourcePath(_ fileName: String) -> UIImage? {
+        let bundle = Bundle(for: BMPlayer.self)
+        return UIImage(named: fileName, in: bundle, compatibleWith: nil)
     }
 }
 
