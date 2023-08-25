@@ -418,10 +418,10 @@ open class BMPlayer: UIView {
         self.bridgeIV = UIImageView(image: BMImageResourcePath("light"))
         self.bridgeView.addSubview(self.bridgeIV)
         self.bridgeProgress = UIProgressView()
-        self.bridgeProgress.layer.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.1).cgColor
-        self.bridgeProgress.layer.cornerRadius = 1
-        self.bridgeProgress.trackTintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
-        
+        self.bridgeProgress.trackTintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.1)
+        self.bridgeProgress.layer.cornerRadius = 2
+        self.bridgeProgress.layer.masksToBounds = true
+        self.bridgeProgress.progressTintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         
         
         addSubview(controlView)
@@ -450,10 +450,12 @@ open class BMPlayer: UIView {
             make.bottom.equalTo(-14)
         }
         
-        bridgeIV.snp.makeConstraints { (make) in
+        
+        bridgeProgress.snp.makeConstraints { (make) in
             make.height.equalTo(4)
             make.right.equalTo(-14)
-            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.equalTo(200)
             make.left.equalTo(bridgeIV.snp.right).offset(12)
         }
         bridgeView.isHidden = true
