@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-s.name             = "BMPlayer"
+s.name             = "WWPlate"
 s.version          = "1.3.2"
 s.summary          = "Video Player Using Swift, based on AVPlayer"
 s.swift_versions   = "5"
@@ -29,7 +29,7 @@ s.subspec 'Full' do |full|
     full.resources    = "Source/**/*.xcassets"
     full.frameworks   = 'UIKit', 'AVFoundation'
 
-    full.dependency 'BMPlayer/Core'
+    full.dependency 'WWPlate/Core'
     full.dependency 'SnapKit', '~> 5.6.0'
     full.dependency 'NVActivityIndicatorView', '~> 4.7.0'
 end
@@ -39,7 +39,7 @@ s.subspec 'CacheSupport' do |cache|
     cache.resources    = "Source/**/*.xcassets"
     cache.frameworks   = 'UIKit', 'AVFoundation'
 
-    cache.dependency 'BMPlayer/Core'
+    cache.dependency 'WWPlate/Core'
     cache.dependency 'SnapKit', '~> 5.6.0'
     cache.dependency 'NVActivityIndicatorView', '~> 4.7.0'
     cache.dependency 'VIMediaCache'
