@@ -550,11 +550,13 @@ open class BMPlayerControlView: UIView {
         playButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_pause"), for: .selected)
         playButton.addTarget(self, action: #selector(onButtonPressed(_:)), for: .touchUpInside)
         
+        currentTimeLabel.adjustsFontSizeToFitWidth = true
         currentTimeLabel.textColor  = UIColor.white
         currentTimeLabel.font       = UIFont.systemFont(ofSize: 12)
         currentTimeLabel.text       = "00:00"
         currentTimeLabel.textAlignment = NSTextAlignment.center
         
+        totalTimeLabel.adjustsFontSizeToFitWidth = true
         totalTimeLabel.textColor    = UIColor.white
         totalTimeLabel.font         = UIFont.systemFont(ofSize: 12)
         totalTimeLabel.text         = "00:00"
@@ -690,7 +692,7 @@ open class BMPlayerControlView: UIView {
         currentTimeLabel.snp.makeConstraints { [unowned self](make) in
             make.left.equalTo(self.playButton.snp.right)
             make.centerY.equalTo(self.playButton)
-            make.width.equalTo(40)
+            make.width.equalTo(60)
         }
         
         timeSlider.snp.makeConstraints { [unowned self](make) in
@@ -707,7 +709,7 @@ open class BMPlayerControlView: UIView {
         totalTimeLabel.snp.makeConstraints { [unowned self](make) in
             make.centerY.equalTo(self.currentTimeLabel)
             make.left.equalTo(self.timeSlider.snp.right).offset(5)
-            make.width.equalTo(40)
+            make.width.equalTo(60)
         }
     
         fullscreenButton.snp.makeConstraints { [unowned self](make) in
